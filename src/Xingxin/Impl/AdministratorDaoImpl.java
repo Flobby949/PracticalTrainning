@@ -38,13 +38,12 @@ public class AdministratorDaoImpl implements AdministratorDao {
     public List<Administrator> getAdministrator(Administrator administrator) {
         String sql="select * from administrator where username=? and password=? and authority=?";
         List<Administrator> administratorList=new ArrayList<Administrator>();
-
         List<Map<String, Object>> maplist= DBUtils.query(sql, administrator.getUserName(),administrator.getPassword(),administrator.getAuthority());
         for(Map<String, Object> map:maplist){
             Administrator ne=new Administrator();
             ne.setUserName((String) (map.get("username")));
             ne.setPassword((String)(map.get("password")));
-            ne.setPassword((String)(map.get("authority")));
+            ne.setAuthority((String)(map.get("authority")));
             administratorList.add(ne);
         }
         return administratorList;
